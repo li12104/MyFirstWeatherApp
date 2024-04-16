@@ -3,9 +3,31 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
 }
 
+buildscript {
+
+    repositories {
+
+        maven { url =uri("https://maven.aliyun.com/repository/central") }
+        maven { url =uri("https://maven.aliyun.com/repository/google") }
+        maven { url =uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url =uri("https://maven.aliyun.com/repository/jcenter") }
+        maven { url =uri("https://maven.aliyun.com/repository/public") }
+        mavenLocal()
+        google()
+    }
+    dependencies {
+        //这里版本根据自己项目而定
+
+    }
+}
+
 android {
     namespace = "com.example.myfirstweatherapp"
     compileSdk = 34
+
+    buildFeatures{
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.example.myfirstweatherapp"
@@ -45,4 +67,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.core3)
+    implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.android3)
 }
