@@ -1,31 +1,15 @@
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-}
-
-buildscript {
-
-    repositories {
-
-        maven { url =uri("https://maven.aliyun.com/repository/central") }
-        maven { url =uri("https://maven.aliyun.com/repository/google") }
-        maven { url =uri("https://maven.aliyun.com/repository/gradle-plugin") }
-        maven { url =uri("https://maven.aliyun.com/repository/jcenter") }
-        maven { url =uri("https://maven.aliyun.com/repository/public") }
-        mavenLocal()
-        google()
-    }
-    dependencies {
-        //这里版本根据自己项目而定
-
-    }
 }
 
 android {
     namespace = "com.example.myfirstweatherapp"
     compileSdk = 34
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 
@@ -35,7 +19,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -75,4 +58,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.core3)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.android3)
+    implementation(libs.converter.moshi)
+    implementation("com.contrarywind:Android-PickerView:4.1.9")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
 }
