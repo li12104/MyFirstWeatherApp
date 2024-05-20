@@ -30,6 +30,7 @@ import com.example.myfirstweatherapp.databinding.ActivityMainBinding
 import com.example.myfirstweatherapp.logic.model.WeatherResponse
 import com.example.myfirstweatherapp.ui.weather.WeatherViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
 import java.io.IOException
@@ -152,7 +153,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
         //判断是否具有定位权限
-//        initLocalInfo()
+        initLocalInfo()
     }
 
 
@@ -233,6 +234,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             println(longitude)
                         } else {
                             // 无法获取位置信息时的处理逻辑
+                            "未获取到经纬度信息".showToast()
                         }
                     }
             } else {
@@ -251,7 +253,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 // 权限被授予
                 if (isLocationEnabled(this)) {
-//                    initLocalInfo()
+                    initLocalInfo()
                 } else {
                     promptForEnableLocation(this)
                 }
